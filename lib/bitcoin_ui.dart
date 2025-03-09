@@ -95,7 +95,7 @@ const defaultCornerRadius = 5.0;
 const defaultPadding = EdgeInsets.symmetric(vertical: 8, horizontal: 30);
 
 class BitcoinButtonFilled extends StatelessWidget {
-  final String title;
+  final Widget body;
   final TextStyle? textStyle;
   final double? width;
   final double? height;
@@ -111,7 +111,7 @@ class BitcoinButtonFilled extends StatelessWidget {
 
   const BitcoinButtonFilled({
     Key? key,
-    required this.title,
+    required this.body,
     this.textStyle,
     this.width,
     this.height,
@@ -163,12 +163,7 @@ class BitcoinButtonFilled extends StatelessWidget {
                           child: CupertinoActivityIndicator(
                               color: buttonTextColor)),
                     )
-                  : Text(title,
-                      style: textStyle ??
-                          Theme.of(context)
-                              .textTheme
-                              .titleSmall
-                              ?.copyWith(color: buttonTextColor))));
+                  : body));
     } else {
       return ElevatedButton(
           style: ButtonStyle(
@@ -197,14 +192,7 @@ class BitcoinButtonFilled extends StatelessWidget {
                       child: CircularProgressIndicator(
                           color: buttonTextColor, strokeWidth: 2)),
                 )
-              : Text(
-                  title,
-                  style: textStyle ??
-                      Theme.of(context)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(color: buttonTextColor),
-                ));
+              : body);
     }
   }
 }
